@@ -4,7 +4,9 @@ This is the frontend for the custom News Explorer app built with React and Vite.
 
 ## 🚀 Live Site
 
-🌐 [View Deployed App](https://your-netlify-or-gh-pages-link.com)
+🌐 ## 🚀 Live Demo
+
+[Click here to view the project](https://dpersaud92.github.io/sprint-16-frontend-stage/)
 
 ## 🔀 Pull Request
 
