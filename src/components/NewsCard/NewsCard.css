@@ -1,0 +1,60 @@
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.news-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: transform 0.2s;
+}
+
+.news-card:hover {
+  transform: scale(1.02);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-card h3 {
+  margin: 12px;
+  font-size: 18px;
+}
+
+.news-card p {
+  margin: 0 12px 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.news-card span {
+  display: block;
+  margin: 0 12px 12px;
+  font-size: 12px;
+  color: #777;
+}
+
+.save-button {
+  margin: 12px;
+  padding: 6px 12px;
+  border: 1px solid #1e90ff;
+  background: transparent;
+  color: #1e90ff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.save-button.saved {
+  background-color: #1e90ff;
+  color: white;
+}
