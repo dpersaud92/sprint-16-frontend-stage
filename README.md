@@ -1,25 +1,36 @@
-# News Explorer Frontend (Custom Project)
+# 📰 Sprint 16: NewsExplorer (Frontend Stage)
 
-This is the frontend for the custom News Explorer app built with React and Vite.
+This is the final project for the **TripleTen Software Engineering Bootcamp**. It’s a fully responsive React-based frontend that allows users to search and save news articles. The app features authentication, dynamic routing, and full integration with a backend API and third-party news service.
 
-## 🚀 Live Site
+## 🚀 Features
 
-🌐 ## 🚀 Live Demo
+- 🔍 Search for news articles by keyword
+- 📚 Save and manage articles (per user)
+- 🔐 User authentication (sign in / sign up)
+- 💾 Persistent login via JWT in localStorage
+- 🧭 Client-side routing with React Router
+- 🎨 Styled with responsive UI based on Figma design
+- 🌙 Dark/light header themes based on route
 
-[Click here to view the project](https://dpersaud92.github.io/sprint-16-frontend-stage/)
+---
 
-## 🔀 Pull Request
+## 📁 Project Structure
 
-🔗 [View PR to main (Stage 1)](https://github.com/your-username/your-repo/pull/123)
+se_project_react/
+├── components/
+├── hooks/
+├── pages/
+├── utils/
+├── assets/
+├── App.jsx
+├── main.jsx
+├── index.css
 
-## 🛠️ Technologies Used
+🔗 Live Demo
+📍 https://github.com/dpersaud92/sprint-16-frontend-stage.git (Update this link if deployed)
 
-- React + Vite
-- React Router v6
-- Environment Variables (.env)
-- News API: [https://newsapi.org](https://newsapi.org)
+🧠 About the Author
+Forged in late-night code sprints and fueled by ambition, this project is the final chapter of my journey through the TripleTen Software Engineering Bootcamp — where I turned bugs into breakthroughs and ideas into interfaces.
 
-## 📦 Getting Started
-
-1. Clone the repo
-2. Create a `.env.local` file with your News API key:
+📎 Related Repositories
+🔗 Backend Repo (Coming Soon)
