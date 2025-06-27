@@ -16,15 +16,7 @@ This is the final project for the **TripleTen Software Engineering Bootcamp**. I
 
 ## 📁 Project Structure
 
-se_project_react/
-├── components/
-├── hooks/
-├── pages/
-├── utils/
-├── assets/
-├── App.jsx
-├── main.jsx
-├── index.css
+<pre> ```markdown se_project_react/ ─┬─ components/ ├─ hooks/ ├─ pages/ ├─ utils/ ├─ assets/ ├─ App.jsx ├─ main.jsx └─ index.css ``` </pre>
 
 🔗 Live Demo
 📍 https://github.com/dpersaud92/sprint-16-frontend-stage.git (Update this link if deployed)
