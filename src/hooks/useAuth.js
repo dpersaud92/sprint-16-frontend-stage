@@ -37,12 +37,13 @@ export default function useAuth() {
       })
       .catch((err) => {
         console.error("Login failed:", err.message);
+        throw err;
       });
   };
 
   // Register and auto-login
-  const handleRegister = (email, password, name) => {
-    return register(email, password, name)
+  const handleRegister = (email, password, username) => {
+    return register(email, password, username)
       .then(() => handleLogin(email, password))
       .catch((err) => {
         console.error("Registration failed:", err.message);

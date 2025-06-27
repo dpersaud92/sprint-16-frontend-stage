@@ -12,10 +12,14 @@ export default function ModalWithForm({ title, children, onClose, onSubmit }) {
     <div className="modal" onClick={handleOverlayClick}>
       <div className="modal__content">
         <button className="modal__close" onClick={onClose}>
-          &times;
+          ×
         </button>
         <h2>{title}</h2>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          className="modal__form"
+        >
           {children}
         </form>
       </div>

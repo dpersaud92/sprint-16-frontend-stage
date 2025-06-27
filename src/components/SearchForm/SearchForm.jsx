@@ -12,14 +12,26 @@ export default function SearchForm({ onSearch }) {
   };
 
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search news..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <section className="search">
+      <div className="search__overlay">
+        <h1 className="search__title">What’s going on in the world?</h1>
+        <p className="search__subtitle">
+          Find the latest news on any topic and save them in your personal
+          account.
+        </p>
+        <form className="search__form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="search__input"
+            placeholder="Enter topic"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button className="search__button" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }

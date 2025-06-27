@@ -1,66 +1,58 @@
 import React, { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
-import NewsCard from "../NewsCard/NewsCard";
+import NewsCardList from "../NewsCardList/NewsCardList";
 import PreLoader from "../PreLoader/PreLoader";
-import { getArticles } from "../../utils/mockData";
-import { motion, AnimatePresence } from "framer-motion";
+import About from "../About/About";
+import { fetchNewsArticles } from "../../utils/api";
+import "./Main.css";
 
 export default function Main({ isLoggedIn, onSaveToggle, savedArticles }) {
-  const [cards, setCards] = useState([]);
+  const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState(""); // "no-results" | "error" | ""
+  const [status, setStatus] = useState(""); // "", "no-results", "error"
 
   const handleSearch = (query) => {
     setIsLoading(true);
     setStatus("");
 
-    getArticles(query)
+    fetchNewsArticles(query)
       .then((results) => {
-        setCards(results);
         if (results.length === 0) {
           setStatus("no-results");
         }
+        setArticles(results);
       })
       .catch(() => setStatus("error"))
       .finally(() => setIsLoading(false));
   };
 
+  const handleShowMore = () => {
+    // Optional: implement real pagination logic
+    console.log("Show more clicked");
+  };
+
   return (
     <main>
       <SearchForm onSearch={handleSearch} />
-      <h2>Latest Articles</h2>
 
       {isLoading && <PreLoader />}
 
-      {!isLoading && status === "no-results" && <p>No results found.</p>}
-      {!isLoading && status === "error" && (
-        <p>Something went wrong. Please try again.</p>
+      {!isLoading && status === "no-results" && (
+        <p className="status-text">No results found.</p>
       )}
 
-      {!isLoading && cards.length > 0 && (
-        <div className="card-list">
-          <AnimatePresence>
-            {cards.map((article) => {
-              const isSaved = savedArticles.some((a) => a.id === article.id);
-              return (
-                <motion.div
-                  key={article.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <NewsCard
-                    article={article}
-                    isLoggedIn={isLoggedIn}
-                    isSaved={isSaved}
-                    onSaveClick={() => onSaveToggle(article)}
-                  />
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </div>
+      {!isLoading && status === "error" && (
+        <p className="status-text">Something went wrong. Please try again.</p>
+      )}
+
+      {!isLoading && articles.length > 0 && (
+        <NewsCardList
+          articles={articles}
+          onSaveClick={onSaveToggle}
+          isLoggedIn={isLoggedIn}
+          isSaved={false}
+          handleShowMore={handleShowMore}
+        />
       )}
     </main>
   );
