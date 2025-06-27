@@ -16,7 +16,7 @@ This is the final project for the **TripleTen Software Engineering Bootcamp**. I
 
 ## 📁 Project Structure
 
-<pre>      Sprint-16-FrontEnd/src/ ─┬─ components/
+<pre>Sprint-16-FrontEnd/src/       ─┬─ components/
                                     ├─ hooks/
                                     ├─ pages/
                                     ├─ utils/
