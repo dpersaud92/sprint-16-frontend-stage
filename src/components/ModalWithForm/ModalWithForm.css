@@ -1,0 +1,88 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 32px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #2f71e5;
+}
+
+.modal__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.modal__label {
+  font-size: 14px;
+  color: #2f71e5;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  background-color: transparent;
+}
+
+.modal__error {
+  color: red;
+  font-size: 12px;
+  margin-top: -16px;
+  margin-bottom: 12px;
+}
+
+.modal__button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 24px;
+  background-color: #d6d6d6;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: not-allowed;
+}
+
+.modal__button--active {
+  background-color: #2f71e5;
+  cursor: pointer;
+}
+
+.modal__switch-link {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #2f71e5;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

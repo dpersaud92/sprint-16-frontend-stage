@@ -1,0 +1,23 @@
+.news-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .news-card-list {
+    padding: 1rem;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+  }
+}
