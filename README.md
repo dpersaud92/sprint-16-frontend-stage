@@ -1,35 +1,31 @@
-# 📰 Sprint 16: NewsExplorer (Frontend Stage)
+📰 NewsExplorer (Sprint 16 – Final Frontend Project)
 
-This is the final project for the **TripleTen Software Engineering Bootcamp**. It’s a fully responsive React-based frontend that allows users to search and save news articles. The app features authentication, dynamic routing, and full integration with a backend API and third-party news service.
+NewsExplorer is a responsive, full-featured React application built as the capstone frontend project for the TripleTen Software Engineering Bootcamp. It allows users to search for current news, authenticate securely, and save favorite articles—all powered by a Node.js backend and a third-party news API.
 
-## 🚀 Features
+🚀 ##Live Application##
+🌐 Frontend: news.dpersaud.crabdance.com
+🔗 Backend API: api.dpersaud.crabdance.com
 
-- 🔍 Search for news articles by keyword
-- 📚 Save and manage articles (per user)
-- 🔐 User authentication (sign in / sign up)
-- 💾 Persistent login via JWT in localStorage
-- 🧭 Client-side routing with React Router
-- 🎨 Styled with responsive UI based on Figma design
-- 🌙 Dark/light header themes based on route
+✨ ##Features##
+🔍 Search Articles: Get live results from GNews via a secure backend proxy
 
----
+🔐 User Authentication: Sign up, log in, and securely manage sessions using JWT
 
-## 📁 Project Structure
+💾 Save Articles: Save/delete articles per user; all data stored in MongoDB
 
-<pre>Sprint-16-FrontEnd/src/ ─┬─ components/
-                              ├─ hooks/
-                              ├─ pages/
-                              ├─ utils/
-                              ├─ assets/
-                              ├─ App.jsx
-                              ├─ main.jsx
-                              └─ index.css </pre>
+🧭 Client-Side Routing: Smooth navigation with React Router
 
-🔗 Live Demo
-📍 https://github.com/dpersaud92/sprint-16-frontend-stage.git (Update this link if deployed)
+🎨 Responsive UI: Styled to match provided Figma design, mobile-first
 
-🧠 About the Author
-Forged in late-night code sprints and fueled by ambition, this project is the final chapter of my journey through the TripleTen Software Engineering Bootcamp — where I turned bugs into breakthroughs and ideas into interfaces.
+🌗 Dynamic Theme: Header appearance changes based on route and auth status
 
-📎 Related Repositories
-🔗 Backend Repo (Coming Soon)
+🧠 Persistent State: Uses localStorage to persist login across sessions
+
+🧱 ##Tech Stack##
+Frontend: React, React Router, Vite, CSS Modules
+
+Backend: Express.js, MongoDB, Mongoose, JWT, bcrypt
+
+Deployment: NGINX, PM2, Certbot, SSH, SCP
+
+Security: HTTPS via Let's Encrypt, environment variables for secrets
