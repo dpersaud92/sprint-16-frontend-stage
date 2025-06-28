@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://api.dpersaud.crabdance.com";
 
 function handleResponse(res) {
   if (res.ok) return res.json();
@@ -38,7 +38,7 @@ export const getUserInfo = (token) =>
 // GNews API for live web search
 export const fetchNewsArticles = async (query) => {
   const response = await fetch(
-    `http://localhost:3001/news/search?q=${encodeURIComponent(query)}`
+    `${BASE_URL}/news/search?q=${encodeURIComponent(query)}`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch news");
