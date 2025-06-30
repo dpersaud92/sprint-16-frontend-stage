@@ -17,7 +17,11 @@ export default function NewsCardList({
     <section className="news-card-list">
       {articles.map((article) => (
         <NewsCard
-          key={article.id}
+          key={
+            article._id ||
+            article.url ||
+            `${article.title}-${article.publishedAt}`
+          }
           article={article}
           isLoggedIn={isLoggedIn}
           isSaved={isSaved}
@@ -25,9 +29,11 @@ export default function NewsCardList({
         />
       ))}
 
-      <button className="show-more-button" onClick={handleShowMore}>
-        Show more
-      </button>
+      <div className="news-card-list__button-wrapper">
+        <button className="show-more-button" onClick={handleShowMore}>
+          Show more
+        </button>
+      </div>
     </section>
   );
 }

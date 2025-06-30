@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__left">
-        <p>© 2025 Dwayne Persaud. Built during TripleTen Bootcamp.</p>
+        <p>© 2025 Dwayne Persaud</p>
         <p>Powered by GNews API</p>
       </div>
       <div className="footer__right">
