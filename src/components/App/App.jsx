@@ -9,62 +9,121 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import SearchForm from "../SearchForm/SearchForm";
-import NewsCardList from "../NewsCardList/NewsCardList";
-import useAuth from "../../hooks/useAuth";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import useAuth from "../../hooks/useAuth";
+import {
+  getArticles,
+  getSavedArticles,
+  saveArticle,
+  deleteArticle,
+} from "../../utils/api";
 
 function AppWrapper() {
-  const { isLoggedIn, currentUser, handleLogin, handleRegister, handleLogout } =
-    useAuth();
+  const {
+    isLoggedIn,
+    currentUser,
+    token,
+    handleLogin,
+    handleRegister,
+    handleLogout,
+    isAuthResolved,
+  } = useAuth();
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [articles, setArticles] = useState(() => {
-    const stored = localStorage.getItem("articles");
-    return stored ? JSON.parse(stored) : [];
-  });
-  const [status, setStatus] = useState("");
-
+  const [articles, setArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const userKey = currentUser?.email || "guest";
-
-  const [savedArticles, setSavedArticles] = useState(() => {
-    const data = JSON.parse(localStorage.getItem("savedArticlesPerUser")) || {};
-    return data[userKey] || [];
-  });
+  const [status, setStatus] = useState("");
+  const [isSavedLoading, setIsSavedLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [lastQuery, setLastQuery] = useState("");
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("savedArticlesPerUser")) || {};
-    data[userKey] = savedArticles;
-    localStorage.setItem("savedArticlesPerUser", JSON.stringify(data));
-  }, [savedArticles, userKey]);
+    if (isLoggedIn) {
+      setIsSavedLoading(true);
+      getSavedArticles(token)
+        .then((data) => setSavedArticles(data))
+        .catch((err) => console.error("Error loading saved articles:", err))
+        .finally(() => setIsSavedLoading(false));
+    }
+  }, [isLoggedIn, currentUser]);
 
-  const handleToggleSave = (article) => {
-    setSavedArticles((prev) => {
-      const alreadySaved = prev.find((a) => a.id === article.id);
-      return alreadySaved
-        ? prev.filter((a) => a.id !== article.id)
-        : [...prev, article];
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setIsLoading(true);
+    setStatus("");
+    setLastQuery(query);
+
+    getArticles(query).then((results) => {
+      const enrichedResults = results.map((article) => ({
+        ...article,
+        keyword: query, // attach search term
+      }));
+      setArticles(enrichedResults);
+      if (enrichedResults.length === 0) setStatus("no-results");
     });
   };
 
-  const handleSearch = (query) => {
-    setIsLoading(true);
-    setStatus("");
+  const handleToggleSave = async (article) => {
+    try {
+      const existing = savedArticles.find((a) => a.url === article.url);
+      if (existing) {
+        await deleteArticle(token, existing._id);
+        setSavedArticles((prev) => prev.filter((a) => a._id !== existing._id));
+        toast.success("Article removed");
+        console.log("🔍 Raw article received:", article);
+      } else {
+        const mappedArticle = {
+          keyword: article.keyword || lastQuery || "Articles",
+          title: article.title || "Untitled",
+          content: article.description || "No description provided.",
+          date: article.publishedAt || new Date().toISOString(),
+          source: article.source?.name || "Unknown source",
+          link: article.url || "https://example.com",
 
-    getArticles(query)
-      .then((results) => {
-        setArticles(results);
-        if (results.length === 0) {
-          setStatus("no-results");
-        }
-      })
-      .catch(() => setStatus("error"))
-      .finally(() => setIsLoading(false));
+          image:
+            article.urlToImage ||
+            article.image ||
+            "https://placehold.co/600x400?text=No+Image",
+        };
+        console.log("💡 Keyword used to save:", mappedArticle.keyword);
+        const saved = await saveArticle(token, mappedArticle);
+        setSavedArticles((prev) => [...prev, saved]);
+        toast.success("Article saved!");
+      }
+    } catch (err) {
+      console.error("Error saving/removing article:", err);
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleClearAll = async () => {
+    try {
+      await Promise.all(savedArticles.map((a) => deleteArticle(token, a._id)));
+      setSavedArticles([]);
+      toast.success("All articles cleared");
+    } catch (err) {
+      console.error("Error clearing saved articles:", err);
+      toast.error("Could not clear articles");
+    }
+  };
+
+  const handleRegisterSuccess = (email, password, username) => {
+    handleRegister(email, password, username);
+    setIsRegisterOpen(false);
+    setIsSuccessModalOpen(true);
+    setTimeout(() => setIsFadingOut(true), 2500);
+    setTimeout(() => {
+      setIsSuccessModalOpen(false);
+      setIsFadingOut(false);
+      setIsLoginOpen(true);
+    }, 3000);
   };
 
   return (
@@ -95,16 +154,23 @@ function AppWrapper() {
         />
 
         <Route path="/about" element={<About />} />
+
         <Route
           path="/profile"
           element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <ProtectedRoute
+              isLoggedIn={isLoggedIn}
+              isAuthResolved={isAuthResolved}
+            >
               <Profile
-                savedArticles={savedArticles}
+                savedArticles={[...savedArticles].sort((a, b) =>
+                  a.keyword.localeCompare(b.keyword)
+                )}
                 onSaveToggle={handleToggleSave}
-                onClearAll={() => setSavedArticles([])}
+                onClearAll={handleClearAll}
                 currentUser={currentUser}
                 onLogout={handleLogout}
+                isSavedLoading={isSavedLoading}
               />
             </ProtectedRoute>
           }
@@ -120,7 +186,7 @@ function AppWrapper() {
             setIsLoginOpen(false);
             setIsRegisterOpen(true);
           }}
-          onLogin={handleLogin}
+          onLogin={(email, password) => handleLogin(email, password, false)}
         />
       )}
 
@@ -131,23 +197,10 @@ function AppWrapper() {
             setIsRegisterOpen(false);
             setIsLoginOpen(true);
           }}
-          onRegister={(email, password, username) => {
-            handleRegister(email, password, username);
-            setIsRegisterOpen(false);
-            setIsSuccessModalOpen(true);
-
-            setTimeout(() => {
-              setIsFadingOut(true);
-            }, 2500);
-
-            setTimeout(() => {
-              setIsSuccessModalOpen(false);
-              setIsFadingOut(false);
-              setIsLoginOpen(true);
-            }, 3000);
-          }}
+          onRegister={handleRegisterSuccess}
         />
       )}
+
       {isSuccessModalOpen && (
         <SuccessModal
           fadeOut={isFadingOut}
@@ -170,6 +223,7 @@ function App() {
   return (
     <Router>
       <AppWrapper />
+      <ToastContainer position="top-right" autoClose={3000} />
     </Router>
   );
 }

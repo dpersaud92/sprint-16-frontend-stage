@@ -1,25 +1,35 @@
-# News Explorer Frontend (Custom Project)
+# 📰 NewsExplorer
 
-This is the frontend for the custom News Explorer app built with React and Vite.
+**NewsExplorer** is a responsive, full-featured React application that lets users search for current news, securely authenticate, and save their favorite articles. It’s powered by a Node.js backend and integrates with a third-party news API to deliver real-time search results.
 
-## 🚀 Live Site
+---
 
-🌐 ## 🚀 Live Demo
+## 🚀 Live Application
 
-[Click here to view the project](https://dpersaud92.github.io/sprint-16-frontend-stage/)
+- 🌐 **Frontend**: [https://news.dpersaud.crabdance.com](https://news.dpersaud.crabdance.com)
+- 🔗 **Backend API**: [https://api.dpersaud.crabdance.com](https://api.dpersaud.crabdance.com)
 
-## 🔀 Pull Request
+---
 
-🔗 [View PR to main (Stage 1)](https://github.com/your-username/your-repo/pull/123)
+## ✨ Features
 
-## 🛠️ Technologies Used
+- 🔍 **Search Articles** – Get live results from GNews via a secure backend proxy
+- 🔐 **User Authentication** – Sign up, log in, and securely manage sessions using JWT
+- 💾 **Save Articles** – Save/delete articles per user; all data stored in MongoDB
+- 🧭 **Client-Side Routing** – Smooth navigation with React Router
+- 🎨 **Responsive UI** – Styled to match provided Figma design, mobile-first
+- 🌗 **Dynamic Theme** – Header appearance changes based on route and auth status
+- 🧠 **Persistent State** – Uses localStorage to persist login across sessions
 
-- React + Vite
-- React Router v6
-- Environment Variables (.env)
-- News API: [https://newsapi.org](https://newsapi.org)
+---
 
-## 📦 Getting Started
+## 🧱 Tech Stack
 
-1. Clone the repo
-2. Create a `.env.local` file with your News API key:
+- **Frontend**: React, React Router, Vite, CSS Modules
+- **Backend**: Express.js, MongoDB, Mongoose, JWT, bcrypt
+- **Deployment**: NGINX, PM2, Certbot, SSH, SCP
+- **Security**: HTTPS via Let's Encrypt, environment variables for secrets
+
+## 🧑‍💻 About the Developer
+
+Built by Dwayne Persaud, a full-stack developer who went from copy-pasting error messages to building secure, production-ready apps. This project is the final milestone of the TripleTen Bootcamp, showcasing everything from authentication to deployment.

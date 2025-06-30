@@ -57,18 +57,20 @@
 
 .news-card__bookmark {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   background-color: white;
+  border-radius: 25%;
+  padding: 1px;
   border: none;
-  border-radius: 50%;
-  padding: 6px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  z-index: 2;
 }
 
 .news-card__bookmark:hover {
-  background-color: #f5f5f5;
+  transform: scale(1.1);
 }
 
 .news-card__bookmark[disabled]:hover::after {
@@ -86,22 +88,18 @@
   opacity: 0.9;
 }
 
-.show-more-button {
-  display: block;
-  margin: 32px auto;
-  padding: 12px 24px;
-  background-color: #2f71e5;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
+.news-card__save {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
   border: none;
-  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.show-more-button:hover {
-  background-color: #255acb;
+  padding: 0;
 }
 
 @media (max-width: 768px) {

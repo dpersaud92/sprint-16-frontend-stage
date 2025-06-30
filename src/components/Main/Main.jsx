@@ -20,14 +20,19 @@ export default function Main({ isLoggedIn, onSaveToggle, savedArticles }) {
         if (results.length === 0) {
           setStatus("no-results");
         }
-        setArticles(results);
+
+        const enriched = results.map((article) => ({
+          ...article,
+          keyword: query,
+        }));
+
+        setArticles(enriched);
       })
       .catch(() => setStatus("error"))
       .finally(() => setIsLoading(false));
   };
 
   const handleShowMore = () => {
-    // Optional: implement real pagination logic
     console.log("Show more clicked");
   };
 

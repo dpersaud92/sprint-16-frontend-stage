@@ -4,6 +4,33 @@
   gap: 24px;
   padding: 2rem;
   background-color: #f9f9f9;
+  align-items: start;
+}
+
+.news-card-list__button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.show-more-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.show-more-button:hover {
+  background-color: #2f71e5;
 }
 
 @media (max-width: 768px) {
