@@ -10,12 +10,13 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import SuccessModal from "../SuccessModal/SuccessModal";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import useAuth from "../../hooks/useAuth";
 import {
-  getArticles,
+  fetchNewsArticles,
   getSavedArticles,
   saveArticle,
   deleteArticle,
@@ -36,6 +37,7 @@ function AppWrapper() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
+
   const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -60,14 +62,20 @@ function AppWrapper() {
     setStatus("");
     setLastQuery(query);
 
-    getArticles(query).then((results) => {
-      const enrichedResults = results.map((article) => ({
-        ...article,
-        keyword: query, // attach search term
-      }));
-      setArticles(enrichedResults);
-      if (enrichedResults.length === 0) setStatus("no-results");
-    });
+    fetchNewsArticles(query)
+      .then((results) => {
+        const enriched = results.map((article) => ({
+          ...article,
+          keyword: query,
+        }));
+        setArticles(enriched);
+        if (enriched.length === 0) setStatus("no-results");
+      })
+      .catch((err) => {
+        console.error("Search error:", err);
+        setStatus("error");
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleToggleSave = async (article) => {
@@ -77,7 +85,6 @@ function AppWrapper() {
         await deleteArticle(token, existing._id);
         setSavedArticles((prev) => prev.filter((a) => a._id !== existing._id));
         toast.success("Article removed");
-        console.log("🔍 Raw article received:", article);
       } else {
         const mappedArticle = {
           keyword: article.keyword || lastQuery || "Articles",
@@ -86,13 +93,11 @@ function AppWrapper() {
           date: article.publishedAt || new Date().toISOString(),
           source: article.source?.name || "Unknown source",
           link: article.url || "https://example.com",
-
           image:
             article.urlToImage ||
             article.image ||
             "https://placehold.co/600x400?text=No+Image",
         };
-        console.log("💡 Keyword used to save:", mappedArticle.keyword);
         const saved = await saveArticle(token, mappedArticle);
         setSavedArticles((prev) => [...prev, saved]);
         toast.success("Article saved!");
@@ -101,6 +106,11 @@ function AppWrapper() {
       console.error("Error saving/removing article:", err);
       toast.error("Something went wrong");
     }
+  };
+
+  const handleUnauthenticatedSave = () => {
+    toast.info("Sign in or create an account to save articles");
+    setIsLoginOpen(true);
   };
 
   const handleClearAll = async () => {
@@ -146,15 +156,17 @@ function AppWrapper() {
                 onSaveToggle={handleToggleSave}
                 isLoading={isLoading}
                 articles={articles}
+                status={status}
                 onSearch={handleSearch}
+                onUnauthenticatedSave={handleUnauthenticatedSave}
+                handleShowMore={() => console.log("Show more clicked")}
               />
+
               <About />
             </>
           }
         />
-
         <Route path="/about" element={<About />} />
-
         <Route
           path="/profile"
           element={
@@ -178,6 +190,7 @@ function AppWrapper() {
       </Routes>
 
       <Footer />
+      <ToastContainer />
 
       {isLoginOpen && (
         <LoginModal
@@ -219,13 +232,12 @@ function AppWrapper() {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <AppWrapper />
-      <ToastContainer position="top-right" autoClose={3000} />
+      <div className="app">
+        <AppWrapper />
+      </div>
     </Router>
   );
 }
-
-export default App;

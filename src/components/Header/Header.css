@@ -1,4 +1,5 @@
-/* Base header layout */
+/* Header.css */
+
 .header {
   position: absolute;
   top: 0;
@@ -6,41 +7,47 @@
   right: 0;
   z-index: 10;
   width: 100%;
-  padding: 16px 32px;
+  padding: 16px 20px;
   font-family: "Cabinet Grotesk", sans-serif;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .header__container {
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .header__logo {
-  font-size: 24px;
+  font-family: "Roboto Slab", serif;
   font-weight: 700;
+  font-size: 20px;
   text-decoration: none;
+  color: inherit;
 }
 
-/* Navigation links */
 .header__nav {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .header__nav-actions {
   display: flex;
-  align-items: center;
   gap: 24px;
+  align-items: center;
 }
 
 .header__link {
-  font-size: 14px;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
+  font-size: 16px;
   text-decoration: none;
   position: relative;
+  color: inherit;
 }
 
 .header__link--active::after {
@@ -48,45 +55,38 @@
   position: absolute;
   bottom: -6px;
   left: 0;
-  height: 2px;
   width: 100%;
+  height: 2px;
   background: currentColor;
 }
 
-/* Auth or logout section */
-.header__actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header__auth-button,
-.header__user-button {
+.header__auth-btn,
+.header__user-btn {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
   font-size: 14px;
-  border-radius: 40px;
-  border: 1px solid currentColor;
-  background: transparent;
   font-weight: 600;
+  border: 1px solid currentColor;
+  border-radius: 40px;
+  background: transparent;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.header__auth-button:hover,
-.header__user-button:hover {
+.header__auth-btn:hover,
+.header__user-btn:hover {
   background-color: rgba(0, 0, 0, 0.05);
-}
-
-.header__logout-icon {
-  width: 20px;
-  height: 20px;
 }
 
 .header__menu {
   position: relative;
+}
+
+.header__icon {
+  font-size: 1rem;
+  transform: rotate(180deg);
 }
 
 .header__dropdown {
@@ -97,23 +97,17 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   min-width: 120px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 100;
-}
-
-.header--dark .header__dropdown {
-  background: #222;
-  color: white;
-  border-color: #444;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header__dropdown-item {
   padding: 10px 16px;
+  font-size: 14px;
   width: 100%;
   text-align: left;
-  border: none;
   background: transparent;
-  font-size: 14px;
+  border: none;
   cursor: pointer;
 }
 
@@ -121,30 +115,41 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Themes */
+.header__menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
 .header--home {
-  background-color: transparent;
+  background: transparent;
   color: white;
 }
 
 .header--home .header__logo,
 .header--home .header__link,
-.header--home .header__auth-button,
-.header--home .header__user-button {
+.header--home .header__auth-btn,
+.header--home .header__user-btn {
   color: white;
   border-color: white;
 }
 
 .header--profile {
-  background-color: #fff;
+  background: #fff;
   color: #000;
   border-bottom: 1px solid #ccc;
 }
 
 .header--profile .header__logo,
 .header--profile .header__link,
-.header--profile .header__auth-button,
-.header--profile .header__user-button {
+.header--profile .header__auth-btn,
+.header--profile .header__user-btn {
   color: #000;
   border-color: #000;
 }
@@ -152,109 +157,121 @@
 @media (max-width: 768px) {
   .header {
     padding: 12px 16px;
-    flex-direction: column;
-    align-items: flex-start;
   }
-
   .header__container {
-    flex-direction: column;
-    align-items: flex-start;
+    margin: 0;
     gap: 12px;
   }
-
   .header__logo {
     font-size: 20px;
   }
-
-  .header__actions {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .header__link {
-    font-size: 16px;
-  }
-
-  .header__user-button,
-  .header__auth-button {
-    width: 100%;
-    justify-content: space-between;
+  .header__auth-btn,
+  .header__user-btn {
     padding: 10px 12px;
   }
 }
 
-.header {
-  padding: 16px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Cabinet Grotesk", sans-serif;
-}
+@media (max-width: 320px) {
+  .header__container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0;
+  }
 
-.header--dark {
-  background: transparent;
-  color: white;
-}
+  .header__menu-icon {
+    display: block;
+    outline: none;
+  }
+  .header__menu-icon:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
-.header--light {
-  background-color: white;
-  color: black;
-}
+  .header__nav-actions {
+    display: none;
+  }
+  .header__nav-actions--visible {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: transparent;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    z-index: 100;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
 
-.header__container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
-}
+  .header__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 
-.header__logo {
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: inherit;
-}
+    height: 25vh;
+    background-color: #1a1b22;
+    color: white;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-.header__nav {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
+  .header__overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    height: 64px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
 
-.header__link {
-  text-decoration: none;
-  color: inherit;
-  font-weight: 500;
-  position: relative;
-}
+  .header__close-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 10px 0 0;
+  }
 
-.header__link--active::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: currentColor;
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-}
+  .header__overlay-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+    padding: 0 32px;
+  }
 
-.header__auth-btn,
-.header__user-btn {
-  background-color: transparent;
-  border: 1px solid currentColor;
-  padding: 6px 12px;
-  border-radius: 24px;
-  cursor: pointer;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-}
+  .header__overlay-link {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+  }
 
-.header__icon {
-  font-size: 1rem;
-  transform: rotate(180deg);
+  .header__overlay-actions {
+    margin-top: auto;
+    padding: 0 32px 32px;
+  }
+
+  .header__auth-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 40px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+  }
 }

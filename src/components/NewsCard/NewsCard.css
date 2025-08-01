@@ -1,11 +1,10 @@
 .news-card {
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  max-width: 320px;
   position: relative;
   font-family: "Cabinet Grotesk", sans-serif;
   transition: transform 0.2s ease;
@@ -17,8 +16,8 @@
 
 .news-card__image {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 272px;
+  object-fit: fill;
 }
 
 .news-card__content {
@@ -34,8 +33,9 @@
 }
 
 .news-card__title {
-  font-size: 18px;
-  font-weight: 700;
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
   color: #000;
   margin: 0;
 }
@@ -45,6 +45,9 @@
   color: #333;
   line-height: 1.4;
   margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .news-card__source {
@@ -102,15 +105,10 @@
   padding: 0;
 }
 
+/* Responsive tweaks */
 @media (max-width: 768px) {
-  .news-card {
-    max-width: 100%;
-    margin: 0 auto;
-    font-size: 14px;
-  }
-
   .news-card__image {
-    height: 160px;
+    height: 224px;
   }
 
   .news-card__title {
@@ -134,10 +132,46 @@
     right: 10px;
     padding: 4px;
   }
+}
 
-  .show-more-button {
-    width: 80%;
-    font-size: 14px;
-    padding: 10px 20px;
+@media (max-width: 320px) {
+  .news-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-family: "Cabinet Grotesk", sans-serif;
+    transition: transform 0.2s ease;
+  }
+  .news-card__link {
+  }
+  .news-card__image {
+    height: 196px;
+    width: 288px;
+  }
+
+  .news-card__title {
+    font-size: 16px;
+  }
+
+  .news-card__description {
+    font-size: 13px;
+  }
+
+  .news-card__date {
+    font-size: 12px;
+  }
+
+  .news-card__source {
+    font-size: 11px;
+  }
+
+  .news-card__bookmark {
+    top: 10px;
+    right: 10px;
+    padding: 4px;
   }
 }

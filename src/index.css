@@ -1,17 +1,56 @@
-/* :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+@import "./fonts.css";
+
+:root {
+  font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #213547;
+  background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  max-width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Typography */
+/* h1,
+h2,
+h3 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  font-family: "Roboto Slab", serif;
+} */
 
 a {
   font-weight: 500;
@@ -20,19 +59,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -54,15 +80,54 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .header,
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  a:hover {
-    color: #747bff;
+
+  .news-card-list {
+    grid-template-columns: repeat(2, 1fr);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Mobile (320px) */
+@media screen and (max-width: 320px) {
+  .app {
+    padding: 0;
   }
-} */
+  .some-wrapper {
+    padding-inline: 0;
+  }
+
+  .footer__copyright {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .news-card-list {
+    grid-template-columns: 1fr;
+  }
+
+  .search__title {
+    font-size: 1.75rem;
+  }
+
+  .search__input {
+    font-size: 0.875rem;
+  }
+
+  .header__logo {
+    font-size: 1.25rem;
+  }
+}

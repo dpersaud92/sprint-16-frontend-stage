@@ -1,6 +1,5 @@
 .profile-page {
   max-width: 1440px;
-  margin: 0 auto;
   padding: 70px 20px;
   font-family: "Cabinet Grotesk", sans-serif;
 }
@@ -13,6 +12,7 @@
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 10px;
+  margin-top: 60px;
 }
 
 .profile__subtitle,
@@ -59,7 +59,7 @@
 
   .clear-button {
     display: block;
-    width: 100%;
+    width: 32%;
     margin: 20px auto;
   }
 }
@@ -73,8 +73,17 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
+  color: black;
 }
 
 .keyword-link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 320px) {
+  .clear-button {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+  }
 }

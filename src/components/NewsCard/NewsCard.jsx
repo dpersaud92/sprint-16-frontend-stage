@@ -8,6 +8,7 @@ export default function NewsCard({
   onSaveClick,
   isLoggedIn,
   isSaved,
+  onUnauthenticatedSaveClick,
 }) {
   const { title, description, url, image, source, publishedAt } = article;
 
@@ -16,6 +17,17 @@ export default function NewsCard({
     day: "numeric",
     year: "numeric",
   });
+
+  const handleBookmarkClick = (e) => {
+    e.preventDefault(); // Prevent link click underneath
+
+    if (!isLoggedIn) {
+      onUnauthenticatedSaveClick?.(); // optional chaining to avoid error
+      return;
+    }
+
+    onSaveClick?.();
+  };
 
   return (
     <div className="news-card">
@@ -35,11 +47,8 @@ export default function NewsCard({
       </a>
 
       <button
-        className={`news-card__bookmark ${
-          isSaved ? "news-card__bookmark--saved" : ""
-        }`}
-        onClick={onSaveClick}
-        disabled={!isLoggedIn}
+        className="news-card__bookmark"
+        onClick={handleBookmarkClick}
         aria-label={
           isLoggedIn
             ? isSaved
@@ -48,7 +57,11 @@ export default function NewsCard({
             : "Sign in to save articles"
         }
       >
-        <img src={bookmarkIcon} alt="" className="news-card__save-icon" />
+        <img
+          src={bookmarkIcon}
+          alt="Bookmark icon"
+          className="news-card__save"
+        />
       </button>
     </div>
   );

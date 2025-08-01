@@ -1,6 +1,6 @@
 .news-card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   padding: 2rem;
   background-color: #f9f9f9;
@@ -33,18 +33,28 @@
   background-color: #2f71e5;
 }
 
+.show-more-button:focus {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .news-card-list {
-    padding: 1rem;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    flex-direction: column;
-    align-items: center;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .news-card-list {
+    grid-template-columns: 1fr;
+    padding: 1rem 0.75rem;
   }
 
-  .card-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 0;
+  .show-more-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }

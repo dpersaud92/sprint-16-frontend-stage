@@ -6,8 +6,9 @@ export default function SearchForm({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted with query:", query);
     if (query.trim()) {
-      onSearch(query);
+      onSearch(query); // Ensure this is defined
     }
   };
 
@@ -27,7 +28,7 @@ export default function SearchForm({ onSearch }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="search__button" type="submit">
+          <button type="submit" className="search__button">
             Search
           </button>
         </form>
