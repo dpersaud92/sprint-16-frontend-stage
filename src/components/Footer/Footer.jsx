@@ -1,44 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Footer.css";
-import { FaGithub, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__left">
-        <p>© 2025 Dwayne Persaud</p>
-        <p>Powered by GNews API</p>
-      </div>
-      <div className="footer__right">
-        <Link to="/" className="footer__link">
-          Home
-        </Link>
-        <a
-          href="https://tripleten.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__link"
-        >
-          TripleTen
-        </a>
-        <a
-          href="https://github.com/dpersaud92"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__icon"
-        >
-          <FaGithub />
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/dwayne-persaud-174b562a6/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__icon"
-        >
-          <FaLinkedin />
-        </a>
+      <div className="footer__content">
+        <div className="footer__links">
+          <p className="footer__copyright">
+            &copy; {new Date().getFullYear()} NewsExplorer, powered by GNEWS
+          </p>
+          <div className="footer__navLinks">
+            {" "}
+            <div className="footer__nav">
+              <Link to="/" className="footer__link">
+                Home
+              </Link>
+              <a
+                href="https://tripleten.com"
+                className="footer__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                TripleTen
+              </a>
+            </div>
+            <div className="footer__social">
+              <a
+                href="https://github.com/dpersaud92"
+                className="footer__icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/dwayne-persaud-174b562a6/"
+                className="footer__icon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

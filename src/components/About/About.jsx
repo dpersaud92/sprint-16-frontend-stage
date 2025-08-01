@@ -6,19 +6,26 @@ export default function About() {
   return (
     <section className="about">
       <img src={authorImage} alt="Author" className="about__image" />
-      <div className="about__text">
+      <div className="about__content">
         <h2 className="about__title">About the author</h2>
-        <p className="about__description">
-          Forged in late-night code sprints and fueled by ambition, this project
-          marks the final chapter of my journey through the TripleTen Software
-          Engineering Bootcamp — where I turned bugs into breakthroughs and
-          ideas into interfaces.
+        <p className="about__text">
+          Hi, I’m Dwayne Persaud, a passionate full-stack web developer with a
+          focus on creating clean, responsive, and user-centered applications. I
+          specialize in JavaScript, React, Node.js, Express, and MongoDB—and I'm
+          always eager to learn and adopt new technologies that enhance my
+          workflow and the user experience.
         </p>
-        <p className="about__description">
-          TripleTen pushed me beyond the tutorials and into real-world
-          problem-solving. I built this project from the ground up — learning
-          how to design, code, and ship. Now, I'm ready to bring that same
-          mindset to any product or team.
+        <p className="about__text">
+          I completed my training at TripleTen, where I built multiple
+          real-world projects using agile methodology, RESTful APIs, React
+          Router, authentication/authorization systems, and scalable backend
+          services. My experience at TripleTen helped sharpen my development
+          skills and taught me how to deliver production-ready solutions.
+        </p>
+        <p className="about__text">
+          I'm excited to bring impactful ideas to life through code—and I look
+          forward to contributing to meaningful projects that solve real
+          problems and elevate user interaction.
         </p>
       </div>
     </section>

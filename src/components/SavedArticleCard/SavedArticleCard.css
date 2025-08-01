@@ -47,8 +47,10 @@
 }
 
 .saved-card__title {
+  font-family: "Robota Slab", sans-serif;
   font-weight: 600;
   margin: 4px 0;
+  color: black;
 }
 
 .saved-card__desc {

@@ -3,7 +3,7 @@ import "./ModalWithForm.css";
 
 export default function ModalWithForm({ title, children, onClose, onSubmit }) {
   const handleOverlayClick = (e) => {
-    if (e.target.classList.contains("modal")) {
+    if (e.target.classNameList.contains("modal")) {
       onClose();
     }
   };
