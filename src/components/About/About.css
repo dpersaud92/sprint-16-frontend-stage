@@ -1,5 +1,6 @@
 .about {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 40px;
@@ -28,8 +29,8 @@
 
 .about__title {
   font-family: "Roboto Slab", serif;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 400;
   color: #000;
   margin: 0;
 }

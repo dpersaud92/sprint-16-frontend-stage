@@ -76,9 +76,14 @@ export default function RegisterModal({ onClose, onSwitch, onRegister }) {
           </button>
         </form>
 
-        <button type="button" className="modal__switch-link" onClick={onSwitch}>
-          or Sign in
-        </button>
+        <div className="modal__switch-wrapper">
+          <p className="modal__switch-text">
+            <span className="modal__switch-or">or </span>
+            <button className="modal__switch-link" onClick={onSwitch}>
+              Sign in
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -15,11 +15,10 @@
 .modal {
   background: white;
   border-radius: 12px;
-  padding: 32px 24px;
+  padding: 34px 36px 28px 36px;
   max-width: 400px;
   width: 90%;
   position: relative;
-  text-align: center;
 }
 
 .modal__title {
@@ -40,11 +39,11 @@
 
 .modal__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -95px;
+  right: -100px;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 50px;
   cursor: pointer;
 }
 
@@ -59,4 +58,24 @@
 
 .fade-out {
   animation: fadeOut 0.5s ease forwards;
+}
+
+@media (max-width: 320px) {
+  .modal {
+    background: white;
+    border-radius: 12px;
+    padding: 34px 36px 28px 36px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+  }
+  .modal__close {
+    position: absolute;
+    top: -95px;
+    right: -55px;
+    background: none;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+  }
 }

@@ -24,8 +24,9 @@
 
 .search__title {
   font-family: "Roboto Slab", serif;
-  font-size: 2rem;
   margin-bottom: 10px;
+  font-size: 60px;
+  font-weight: 400;
 }
 
 .search__subtitle {
@@ -36,8 +37,6 @@
 .search__form {
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 608px;
   height: 64px;
   background-color: white;
   border-radius: 32px;

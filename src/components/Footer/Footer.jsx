@@ -12,8 +12,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} NewsExplorer, powered by GNEWS
           </p>
           <div className="footer__navLinks">
-            {" "}
-            <div className="footer__nav">
+            <nav className="footer__nav">
               <Link to="/" className="footer__link">
                 Home
               </Link>
@@ -25,7 +24,7 @@ export default function Footer() {
               >
                 TripleTen
               </a>
-            </div>
+            </nav>
             <div className="footer__social">
               <a
                 href="https://github.com/dpersaud92"

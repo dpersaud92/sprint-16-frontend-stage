@@ -22,6 +22,8 @@
 }
 
 .footer__links {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -40,6 +42,7 @@
   color: #000;
   text-decoration: none;
   font-weight: 500;
+  font-size: 18px;
 }
 
 .footer__link:hover {
@@ -64,7 +67,8 @@
 
 .footer__copyright {
   color: #a0a0a0;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 /* Responsive adjustments */
@@ -125,12 +129,13 @@
   }
 
   .footer__copyright {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0 16px 22px;
     order: 2;
     text-align: center;
     white-space: normal;
     overflow: visible;
-    white-space: nowrap;
   }
 }
