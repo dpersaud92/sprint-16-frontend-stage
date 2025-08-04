@@ -1,5 +1,8 @@
 .news-card {
   background-color: white;
+  max-height: 576px;
+  height: 100%;
+  max-width: 400px;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -20,7 +23,7 @@
 }
 
 .news-card__content {
-  padding: 16px;
+  height: 304px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -47,10 +50,16 @@
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .news-card__source {
-  font-size: 12px;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 16px;
   color: #888;
   font-weight: 600;
   text-transform: uppercase;
@@ -106,8 +115,29 @@
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
+  .news-card {
+    background-color: white;
+    max-height: 420px;
+    height: 100%;
+    max-width: 224px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  .news-card__content {
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .news-card__image {
-    height: 224px;
+    height: 150px;
+    object-fit: fill;
   }
 
   .news-card__title {
@@ -135,16 +165,22 @@
 
 @media (max-width: 320px) {
   .news-card__image {
-    height: 196px;
-    width: 288px;
+    height: auto;
+    width: 100%;
   }
 
   .news-card__title {
-    font-size: 16px;
+    font-size: 22px;
+    font-weight: 400;
   }
 
   .news-card__description {
-    font-size: 13px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .news-card__source {
+    font-size: 16px;
+    font-weight: 700;
   }
 
   .news-card__date {

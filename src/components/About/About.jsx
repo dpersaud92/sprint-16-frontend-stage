@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import authorImage from "/assets/authorImg.svg";
+import authorImage from "/assets/authorImg.png";
 
 export default function About() {
   return (

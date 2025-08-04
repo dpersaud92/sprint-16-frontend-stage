@@ -2,6 +2,7 @@ import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import PreLoader from "../PreLoader/PreLoader";
+import notFound from "../../../public/assets/notFound.svg";
 import "./Main.css";
 
 export default function Main({
@@ -22,7 +23,17 @@ export default function Main({
       {isLoading && <PreLoader />}
 
       {!isLoading && status === "no-results" && (
-        <p className="status-text">No results found.</p>
+        <div className="status-block">
+          <img
+            className="status__not-found"
+            src={notFound}
+            alt="No results found"
+          />
+          <h2 className="status-text">Nothing Found</h2>
+          <h3 className="status-description">
+            Sorry, but nothing matched your search terms.
+          </h3>
+        </div>
       )}
 
       {!isLoading && status === "error" && (
