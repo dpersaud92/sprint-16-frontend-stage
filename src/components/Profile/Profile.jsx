@@ -77,22 +77,22 @@ export default function Profile({
   return (
     <main className="profile-page">
       <section className="profile__header">
-        <h2 className="profile__title">
+        <h1 className="profile__title">
           {currentUser?.username || "User"}, you have {savedArticles.length}{" "}
           saved article{savedArticles.length !== 1 ? "s" : ""}
-        </h2>
+        </h1>
 
         {savedArticles.length > 0 && (
           <>
-            <p className="profile__subtitle">
+            <h2 className="profile__subtitle">
               By keywords:{" "}
               <span className="profile__keywords">
                 {getKeywordSummary(savedArticles, setSelectedKeyword)}
               </span>
-            </p>
+            </h2>
 
             {selectedKeyword && (
-              <p className="profile__keywords">
+              <h2 className="profile__keywords">
                 Showing results for:{" "}
                 <strong style={{ color: "#000" }}>{selectedKeyword}</strong>{" "}
                 <button
@@ -101,7 +101,7 @@ export default function Profile({
                 >
                   (Show All)
                 </button>
-              </p>
+              </h2>
             )}
 
             <button className="clear-button" onClick={onClearAll}>
@@ -115,7 +115,7 @@ export default function Profile({
         {isSavedLoading ? (
           <div className="loader">Loading...</div>
         ) : filteredArticles.length === 0 ? (
-          <p>No saved articles yet.</p>
+          <h2>No saved articles yet.</h2>
         ) : (
           filteredArticles.map((article) => (
             <SavedArticleCard

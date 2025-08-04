@@ -10,25 +10,28 @@
 
 .modal__title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 900;
   margin-bottom: 24px;
 }
 
 .modal__label {
+  font-family: "Inter", sans-serif;
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   color: #2f71e5;
   margin-bottom: 4px;
 }
 
 .modal__input {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  padding: 10px 10px 10px 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   border: none;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
   background-color: transparent;
+  color: black;
 }
 
 .modal__error {
@@ -42,8 +45,8 @@
   width: 100%;
   padding: 14px;
   border-radius: 20px;
-  background-color: #d6d6d6;
-  color: white;
+  background-color: #e6e8eb;
+  color: #b6bcbf;
   border: none;
   font-weight: bold;
   cursor: not-allowed;
@@ -55,11 +58,30 @@
   cursor: pointer;
 }
 
-.modal__switch-link {
-  margin-top: 16px;
-  font-size: 14px;
+.modal__switch-wrapper {
   text-align: center;
+  margin-top: 16px;
+}
+
+.modal__switch-text {
+  font-size: 14px;
+}
+
+.modal__switch-or {
+  color: black;
+}
+
+.modal__switch-link {
+  background: none;
+  border: none;
+  font-size: 14px;
   color: #2f71e5;
+  font-weight: 500;
+  cursor: pointer;
   text-decoration: none;
-  display: block;
+  padding: 0;
+}
+
+.modal__switch-link:hover {
+  text-decoration: underline;
 }

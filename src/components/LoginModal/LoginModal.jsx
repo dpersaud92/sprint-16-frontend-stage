@@ -42,6 +42,7 @@ export default function LoginModal({ onClose, onSwitch, onLogin }) {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email"
             required
           />
           {!isEmailValid && email.length > 0 && (
@@ -54,6 +55,7 @@ export default function LoginModal({ onClose, onSwitch, onLogin }) {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
             required
           />
           {error && <p className="modal__error">{error}</p>}
@@ -68,9 +70,14 @@ export default function LoginModal({ onClose, onSwitch, onLogin }) {
           </button>
         </form>
 
-        <button className="modal__switch-link" onClick={onSwitch}>
-          or Sign up
-        </button>
+        <div className="modal__switch-wrapper">
+          <p className="modal__switch-text">
+            <span className="modal__switch-or">or </span>
+            <button className="modal__switch-link" onClick={onSwitch}>
+              Sign in
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );

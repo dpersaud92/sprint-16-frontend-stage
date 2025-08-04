@@ -1,78 +1,8 @@
-// import React, { useState } from "react";
-// import SearchForm from "../SearchForm/SearchForm";
-// import NewsCardList from "../NewsCardList/NewsCardList";
-// import PreLoader from "../PreLoader/PreLoader";
-// import About from "../About/About";
-// import { fetchNewsArticles } from "../../utils/api";
-// import "./Main.css";
-
-// export default function Main({
-//   isLoggedIn,
-//   onSaveToggle,
-//   onUnauthenticatedSave,
-//   savedArticles,
-// }) {
-//   const [articles, setArticles] = useState([]);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [status, setStatus] = useState(""); // "", "no-results", "error"
-
-//   const handleSearch = (query) => {
-//     setIsLoading(true);
-//     setStatus("");
-
-//     fetchNewsArticles(query)
-//       .then((results) => {
-//         if (results.length === 0) {
-//           setStatus("no-results");
-//         }
-
-//         const enriched = results.map((article) => ({
-//           ...article,
-//           keyword: query,
-//         }));
-
-//         setArticles(enriched);
-//       })
-//       .catch(() => setStatus("error"))
-//       .finally(() => setIsLoading(false));
-//   };
-
-//   const handleShowMore = () => {
-//     console.log("Show more clicked");
-//   };
-
-//   return (
-//     <main>
-//       <SearchForm onSearch={handleSearch} />
-
-//       {isLoading && <PreLoader />}
-
-//       {!isLoading && status === "no-results" && (
-//         <p className="status-text">No results found.</p>
-//       )}
-
-//       {!isLoading && status === "error" && (
-//         <p className="status-text">Something went wrong. Please try again.</p>
-//       )}
-
-//       {!isLoading && articles.length > 0 && (
-//         <NewsCardList
-//           articles={articles}
-//           onSaveClick={onSaveToggle}
-//           isLoggedIn={isLoggedIn}
-//           isSaved={false}
-//           onUnauthenticatedSaveClick={onUnauthenticatedSave}
-//           handleShowMore={handleShowMore}
-//         />
-//       )}
-//     </main>
-//   );
-// }
-
 import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import PreLoader from "../PreLoader/PreLoader";
+import notFound from "../../../public/assets/notFound.svg";
 import "./Main.css";
 
 export default function Main({
@@ -87,13 +17,23 @@ export default function Main({
   handleShowMore,
 }) {
   return (
-    <main>
+    <>
       <SearchForm onSearch={onSearch} />
 
       {isLoading && <PreLoader />}
 
       {!isLoading && status === "no-results" && (
-        <p className="status-text">No results found.</p>
+        <div className="status-block">
+          <img
+            className="status__not-found"
+            src={notFound}
+            alt="No results found"
+          />
+          <h2 className="status-text">Nothing Found</h2>
+          <h3 className="status-description">
+            Sorry, but nothing matched your search terms.
+          </h3>
+        </div>
       )}
 
       {!isLoading && status === "error" && (
@@ -110,6 +50,6 @@ export default function Main({
           handleShowMore={handleShowMore}
         />
       )}
-    </main>
+    </>
   );
 }

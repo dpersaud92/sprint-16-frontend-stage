@@ -1,0 +1,31 @@
+.status__not-found {
+  max-width: 82.5px;
+  max-height: 82.5px;
+  margin-top: 86px;
+  margin-bottom: 31.5px;
+}
+.status-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.status-text {
+  font-family: Roboto Slab;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: o;
+}
+.status-description {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  color: #b6bcbf;
+  max-width: 356px;
+}

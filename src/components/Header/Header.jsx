@@ -87,53 +87,57 @@ export default function Header({
 
       {showMobileMenu && (
         <div className="header__overlay">
-          <div className="header__overlay-header">
-            <Link
-              to="/"
-              className="header__logo"
-              onClick={() => setShowMobileMenu(false)}
-            >
-              NewsExplorer
-            </Link>
-            <button
-              className="header__close-icon"
-              onClick={() => setShowMobileMenu(false)}
-              aria-label="Close menu"
-            >
-              &times;
-            </button>
-          </div>
-
-          <nav className="header__overlay-nav">
-            <Link
-              to="/"
-              className="header__overlay-link"
-              onClick={() => setShowMobileMenu(false)}
-            >
-              Home
-            </Link>
-            {isLoggedIn && (
+          <div className="header__overlay-top">
+            <div className="header__overlay-header">
               <Link
-                to="/profile"
+                to="/"
+                className="header__logo"
+                onClick={() => setShowMobileMenu(false)}
+              >
+                NewsExplorer
+              </Link>
+              <button
+                className="header__close-icon"
+                onClick={() => setShowMobileMenu(false)}
+                aria-label="Close menu"
+              >
+                &times;
+              </button>
+            </div>
+
+            <nav className="header__overlay-nav">
+              <Link
+                to="/"
                 className="header__overlay-link"
                 onClick={() => setShowMobileMenu(false)}
               >
-                Saved articles
+                Home
               </Link>
-            )}
-          </nav>
+              {isLoggedIn && (
+                <Link
+                  to="/profile"
+                  className="header__overlay-link"
+                  onClick={() => setShowMobileMenu(false)}
+                >
+                  Saved articles
+                </Link>
+              )}
+            </nav>
 
-          <div className="header__overlay-actions">
-            {!isLoggedIn ? (
-              <button className="header__auth-btn" onClick={onLoginClick}>
-                Sign in
-              </button>
-            ) : (
-              <button className="header__auth-btn" onClick={onLogout}>
-                Log out
-              </button>
-            )}
+            <div className="header__overlay-actions">
+              {!isLoggedIn ? (
+                <button className="header__auth-btn" onClick={onLoginClick}>
+                  Sign in
+                </button>
+              ) : (
+                <button className="header__auth-btn" onClick={onLogout}>
+                  Log out
+                </button>
+              )}
+            </div>
           </div>
+
+          <div className="header__overlay-bottom" />
         </div>
       )}
     </>

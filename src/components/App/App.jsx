@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -43,7 +43,6 @@ function AppWrapper() {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [isSavedLoading, setIsSavedLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [lastQuery, setLastQuery] = useState("");
 
   useEffect(() => {
@@ -57,7 +56,6 @@ function AppWrapper() {
   }, [isLoggedIn, currentUser]);
 
   const handleSearch = (query) => {
-    setSearchQuery(query);
     setIsLoading(true);
     setStatus("");
     setLastQuery(query);
@@ -145,49 +143,49 @@ function AppWrapper() {
         onLogout={handleLogout}
       />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Main
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Main
+                  isLoggedIn={isLoggedIn}
+                  savedArticles={savedArticles}
+                  onSaveToggle={handleToggleSave}
+                  isLoading={isLoading}
+                  articles={articles}
+                  status={status}
+                  onSearch={handleSearch}
+                  onUnauthenticatedSave={handleUnauthenticatedSave}
+                  handleShowMore={() => console.log("Show more clicked")}
+                />
+                <About />
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute
                 isLoggedIn={isLoggedIn}
-                savedArticles={savedArticles}
-                onSaveToggle={handleToggleSave}
-                isLoading={isLoading}
-                articles={articles}
-                status={status}
-                onSearch={handleSearch}
-                onUnauthenticatedSave={handleUnauthenticatedSave}
-                handleShowMore={() => console.log("Show more clicked")}
-              />
-
-              <About />
-            </>
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute
-              isLoggedIn={isLoggedIn}
-              isAuthResolved={isAuthResolved}
-            >
-              <Profile
-                savedArticles={[...savedArticles].sort((a, b) =>
-                  a.keyword.localeCompare(b.keyword)
-                )}
-                onSaveToggle={handleToggleSave}
-                onClearAll={handleClearAll}
-                currentUser={currentUser}
-                onLogout={handleLogout}
-                isSavedLoading={isSavedLoading}
-              />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+                isAuthResolved={isAuthResolved}
+              >
+                <Profile
+                  savedArticles={[...savedArticles].sort((a, b) =>
+                    a.keyword.localeCompare(b.keyword)
+                  )}
+                  onSaveToggle={handleToggleSave}
+                  onClearAll={handleClearAll}
+                  currentUser={currentUser}
+                  onLogout={handleLogout}
+                  isSavedLoading={isSavedLoading}
+                />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </main>
 
       <Footer />
       <ToastContainer />
@@ -234,10 +232,8 @@ function AppWrapper() {
 
 export default function App() {
   return (
-    <Router>
-      <div className="app">
-        <AppWrapper />
-      </div>
-    </Router>
+    <div className="app">
+      <AppWrapper />
+    </div>
   );
 }
