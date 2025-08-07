@@ -7,14 +7,14 @@
   right: 0;
   z-index: 10;
   width: 100%;
-  padding: 16px 20px;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .header__container {
   max-width: 1440px;
+  padding: 0 20px; /* Add side padding here */
   margin: 0 auto;
-  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,74 +149,12 @@
 }
 
 @media (max-width: 768px) {
-  .header {
-    padding: 12px 16px;
-  }
-  .header__container {
-    margin: 0;
-    gap: 12px;
-  }
-  .header__logo {
-    font-size: 20px;
-  }
-  .header__auth-btn,
-  .header__user-btn {
-    padding: 10px 12px;
-  }
-}
-
-@media (max-width: 514px) {
-  .header {
-    padding: 12px 16px;
-  }
-
-  .header__nav {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .header__auth-btn,
-  .header__user-btn {
-    padding: 8px;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 320px) {
-  .header__container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-  }
-
   .header__menu-icon {
     display: block;
-    outline: none;
   }
-  .header__menu-icon:focus {
-    outline: none;
-    box-shadow: none;
-  }
-  .header__logo {
-    color: white;
-  }
+
   .header__nav-actions {
     display: none;
-  }
-  .header__nav-actions--visible {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: transparent;
-    position: absolute;
-    top: 60px;
-    right: 16px;
-    z-index: 100;
-    padding: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
   }
 
   .header__overlay {
@@ -233,8 +171,10 @@
   .header__overlay-top {
     background-color: #1a1b22;
     padding-bottom: 32px;
-    z-index: 1;
-    height: 30vh;
+    z-index: 1010;
+    height: 278px;
+    max-height: 100%;
+    position: relative;
   }
 
   .header__overlay-bottom {
@@ -245,14 +185,16 @@
 
   .header__overlay-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 16px;
     height: 64px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     margin: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .header__logo {
+    color: white;
   }
 
   .header__close-icon {
@@ -294,6 +236,5 @@
     border: 1px solid white;
     background: transparent;
     color: white;
-    margin-bottom: 288px;
   }
 }

@@ -19,10 +19,10 @@ export default function NewsCard({
   });
 
   const handleBookmarkClick = (e) => {
-    e.preventDefault(); // Prevent link click underneath
+    e.preventDefault();
 
     if (!isLoggedIn) {
-      onUnauthenticatedSaveClick?.(); // optional chaining to avoid error
+      onUnauthenticatedSaveClick?.();
       return;
     }
 

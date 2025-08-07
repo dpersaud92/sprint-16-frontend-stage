@@ -1,7 +1,7 @@
 @import "./fonts.css";
 
 :root {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -25,11 +25,10 @@ body {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  overflow-x: hidden;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   min-height: 100vh;
 }
 
@@ -102,7 +101,6 @@ iframe {
 /* Patch horizontal scroll between 321px and 514px */
 @media (max-width: 514px) {
   body {
-    overflow-x: hidden;
   }
 
   .search {
