@@ -5,7 +5,6 @@
   max-width: 400px;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -19,7 +18,7 @@
 .news-card__image {
   width: 100%;
   height: 272px;
-  object-fit: fit;
+  object-fit: fill;
 }
 
 .news-card__content {
@@ -192,7 +191,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 20px 24px 24px;
+    padding: 16px;
   }
 
   .news-card__title {
@@ -210,11 +209,15 @@
   }
 
   .news-card__date {
-    font-size: 12px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 0;
   }
 
   .news-card__source {
-    font-size: 11px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 16px;
   }
 
   .news-card__bookmark {

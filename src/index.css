@@ -1,7 +1,7 @@
 @import "./fonts.css";
 
 :root {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -28,7 +28,7 @@ body {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   min-height: 100vh;
 }
 

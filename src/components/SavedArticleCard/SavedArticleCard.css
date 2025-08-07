@@ -12,7 +12,7 @@
 .saved-card__image {
   width: 100%;
   height: 272px;
-  object-fit: fit;
+  object-fit: fill;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -48,7 +48,8 @@
 }
 
 .saved-card__date {
-  font-size: 14px;
+  font-family: "Roboto", serif;
+  font-size: 18px;
   color: gray;
 }
 
@@ -65,29 +66,61 @@
 }
 
 .saved-card__source {
+  font-family: "Roboto", serif;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 16px;
   color: #888;
   margin-top: 6px;
 }
 @media (max-width: 768px) {
+  .saved-card {
+    max-width: 224px;
+  }
+  .saved-card__badge {
+    max-width: 100px;
+    padding: 6px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .saved-card__trash {
+    top: 24px;
+    right: 12px;
+  }
   .saved-card__image {
     width: 100%;
     height: 150px;
-    object-fit: fit;
+    object-fit: fill;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+  }
+  .saved-card__date {
+    margin-top: 0;
+    margin-bottom: 12px;
   }
   .saved-card__content {
     padding: 16px;
     height: 270px;
+  }
+  .saved-card__title {
+    margin: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .saved-card__source {
+    margin-top: 12px;
+    margin-bottom: 0;
   }
 }
 @media (max-width: 320px) {
   .saved-card__image {
     width: 100%;
     height: 196px;
-    object-fit: fit;
+    object-fit: fill;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }

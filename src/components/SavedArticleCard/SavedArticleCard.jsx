@@ -4,7 +4,7 @@ import "./SavedArticleCard.css";
 const trashIcon = "/assets/trash.svg";
 
 export default function SavedArticleCard({ article, onDelete }) {
-  const { title, text, date, image, source, link } = article;
+  const { title, description, date, image, source, link } = article;
 
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     month: "long",
@@ -38,7 +38,7 @@ export default function SavedArticleCard({ article, onDelete }) {
         <div className="saved-card__content">
           <p className="saved-card__date">{formattedDate}</p>
           <h3 className="saved-card__title">{title}</h3>
-          <p className="saved-card__desc">{text}</p>
+          <p className="saved-card__desc">{description}</p>
           <p className="saved-card__source">{source}</p>
         </div>
       </a>

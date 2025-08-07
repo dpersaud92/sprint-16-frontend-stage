@@ -23,6 +23,7 @@
 }
 
 .clear-button {
+  font-family: "Roboto", serif;
   background-color: #ff4d4f;
   color: white;
   padding: 10px 16px;
@@ -47,7 +48,9 @@
   .profile-page {
     padding: 20px;
   }
-
+  .profile__cards {
+    justify-items: center;
+  }
   .profile__title {
     font-size: 22px;
     text-align: center;

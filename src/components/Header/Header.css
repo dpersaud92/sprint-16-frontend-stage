@@ -7,14 +7,14 @@
   right: 0;
   z-index: 10;
   width: 100%;
-  padding: 16px 20px;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .header__container {
   max-width: 1440px;
+  padding: 0 20px; /* Add side padding here */
   margin: 0 auto;
-  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -172,7 +172,8 @@
     background-color: #1a1b22;
     padding-bottom: 32px;
     z-index: 1010;
-    height: 30vh;
+    height: 278px;
+    max-height: 100%;
     position: relative;
   }
 
