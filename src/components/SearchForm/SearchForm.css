@@ -1,6 +1,6 @@
 .search {
   width: 100%;
-  background-image: url("/assets/heroPic.png");
+  background-image: url("/assets/heroPic.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,7 +10,6 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 .search__overlay {
@@ -110,9 +109,21 @@
   .search {
     padding: 120px 16px;
   }
-
+  .search__form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    gap: 8px;
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+  }
   .search__button {
-    max-width: 168px;
+    max-width: 100%;
   }
 }
 
@@ -173,7 +184,7 @@
     border-radius: 32px;
     transition: background 0.3s ease;
     height: 100%;
-    max-width: 238px;
+    max-width: 268px;
     width: 100%;
   }
 }
